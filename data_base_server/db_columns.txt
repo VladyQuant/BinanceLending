@@ -1,0 +1,14 @@
+user_balances
+ id       | integer               |           | not null | nextval('user_balances_id_seq'::regclass) | plain    |             |              | 
+ username | character varying(50) |           | not null |                                           | extended |             |              | 
+ coin     | character varying(10) |           | not null |                                           | extended |             |              | 
+ amount   | numeric(20,10)        |  
+
+
+
+user_strategies
+ id       | integer               |           | not null | nextval('user_strategies_id_seq'::regclass) | plain    |             |              | 
+ username | character varying(50) |           | not null |                                             | extended |             |              | 
+ strategy | character varying(50) |           | not null |                                             | extended |             |              | 
+ coin     | character varying(10) |           | not null |                                             | extended |             |              | 
+ amount   | numeric(20,10)        |           |          |                                             | main     |             |              | 
