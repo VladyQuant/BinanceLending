@@ -1,5 +1,6 @@
 const express = require('express')
 const pg = require('pg')
+const cors = require('cors');
 
 const app = express()
 const app_port = process.env.APP_PORT || 5000;
@@ -10,6 +11,7 @@ const user_strategies_table_name = process.env.STRATEGIES_TABLE_NAME || "user_st
 
 app.use(express.urlencoded({extended: true})); // New
 app.use(express.json()); // New
+app.use(cors());
 
 // Listen on enviroment port or 5000
 app.listen(app_port, () => console.log(`Listening on port ${app_port}`))
@@ -44,10 +46,10 @@ app.get('/user_balances', (req, res) => {
 app.get('/user_balances/:username&:coin', (req, res) => {
     pool.connect((err, connection, done) => {
         if(err) throw err
-        connection.query(`SELECT amount FROM user_balances WHERE username = '${req.params.username}' AND coin = '${req.params.coin}'`, 
+        connection.query(`SELECT * FROM user_balances WHERE username = '${req.params.username}' AND coin = '${req.params.coin}'`, 
             (err, res_) => {
             if (!err) {
-                res.send(res_.rows.map((x) => x['amount']))
+                res.send(res_.rows)
             } else {
                 console.log(err)
             }
@@ -113,10 +115,10 @@ app.get('/user_strategies', (req, res) => {
 app.get('/user_strategies/:username&:strategy&:coin', (req, res) => {
     pool.connect((err, connection, done) => {
         if(err) throw err
-        connection.query(`SELECT amount FROM ${user_strategies_table_name} WHERE username = '${req.params.username}' AND strategy = '${req.params.strategy}' AND coin = '${req.params.coin}'`, 
+        connection.query(`SELECT * FROM ${user_strategies_table_name} WHERE username = '${req.params.username}' AND strategy = '${req.params.strategy}' AND coin = '${req.params.coin}'`, 
             (err, res_) => {
             if (!err) {
-                res.send(res_.rows.map((x) => x['amount']))
+                res.send(res_.rows)
             } else {
                 console.log(err)
             }

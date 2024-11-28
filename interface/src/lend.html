@@ -1,0 +1,54 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./styles/index.css" />
+		<title>Lend in Binance</title>
+	</head>
+	<body>
+        <main>
+            <div id="navbar-container"></div>
+            <script src="./js/navbar.js"></script>
+
+			<h2>Lend funds</h2>
+
+			<form class="lend">
+				<fieldset>
+					<label for="username">
+						<span>Username:</span>
+						<input type="string" name="username" required />
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<label for="coin">Choose currency:</label>
+					<select name="coin" id="coin">     
+						<option value="BTC">BCT</option>
+						<option value="ETH">ETH</option>
+						<option value="USDT">USDT</option>
+					</select>
+				</fieldset>
+
+				<fieldset>
+					<label for="amount">
+						<span>Amount:</span>
+						<input type="number" name="amount" required min="0" value="0" step=".00000001"/>
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<label for="strategy">Choose product:</label>
+					<select name="strategy" id="strategy">     
+						<option value="flexible">Simple Earn Flexible</option>
+						<option value="locked">Simple Earn Locked</option>
+					</select>
+				</fieldset>
+
+				<fieldset>
+					<button>Lend!</button>
+				</fieldset>
+
+			</form>
+		</main>
+		<script src="./ts/lend.ts" type="module"></script>
+    </body>

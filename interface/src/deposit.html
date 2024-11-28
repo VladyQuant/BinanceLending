@@ -1,0 +1,54 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./styles/index.css" />
+		<title>Deposit</title>
+	</head>
+	<body>
+        <main>
+            <div id="navbar-container"></div>
+            <script src="./js/navbar.js"></script>
+    
+			<h2>Deposit funds</h2>
+
+			<form class="deposit">
+				<fieldset>
+					<label for="username">
+						<span>Username:</span>
+						<input type="string" name="username" required />
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<label for="coin">Choose currency:</label>
+					<select name="coin" id="coin">     
+						<option value="BTC" selected>BCT</option>
+						<option value="EHT">ETH</option>
+						<option value="USDT">USDT</option>
+					</select>
+				</fieldset>
+
+				<fieldset>
+					<label for="amount">
+						<span>Amount:</span>
+						<input type="number" name="amount" required min="0" value="0" step=".00000001"/>
+					</label>
+				</fieldset>
+
+                <fieldset>
+					<label for="address">
+						<span>Wallet address:</span>
+						<input type="string" name="address" required />
+					</label>
+				</fieldset>
+
+
+				<fieldset>
+					<button>Deposit!</button>
+				</fieldset>
+
+			</form>
+		</main>
+		<script src="./ts/deposit.ts" type="module"></script>
+    </body>

@@ -1,1 +1,4 @@
 /data_base_server/node_modules
+/interface/node_modules
+/interface/.parcel-cache
+/interface/dist
